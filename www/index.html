@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width" name="viewport">
+  <title></title>
+  <link href="manifest.json" rel="manifest">
+  <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet"><!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+    <link href="css/ionic.app.css" rel="stylesheet">
+    -->
+  <!-- ionic/angularjs js -->
+
+  <script src="lib/ionic/js/ionic.bundle.js">
+  </script><!-- cordova script (this will be a 404 during development) -->
+
+  <script src="cordova.js">
+  </script><!-- your app's js -->
+
+  <!-- jquery -->
+  <script src="js/jquery.min.js">
+  </script>
+
+  <script src="js/app.js">
+  </script>
+  <!-- controller -->
+  <script src="js/controller.js">
+  </script>
+  <!-- service -->
+  <script src="js/factory.js">
+  </script>
+  <style type="text/css">
+    .ion-android- {
+    }
+  </style>
+</head>
+<body ng-app = "starter" ng-controller="mainCtrl" style="background-image:url(img/cool_background.jpg);width:100%;background-repeat: no-repeat; ">
+
+<table style="color:white;width:100%;height:150px; border:1px; background:;
+background-image: url(img/background-image.jpg);background-size: cover; background-repeat: no-repeat;
+background-position: center center;position:fixed; top:0;  z-index:100;">
+  <tr style="margin-bottom: 150px;">
+    <td style="padding-left: 20px;padding-top: 15px; font-weight: 100; font-size: 30px"><img src="img/absa_connect.png" style="width: 80%"><br/>
+
+    <span ng-click="refresh()" style="font-size: 20px; margin-bottom: 18px"><i class="ion-android-refresh"> Refresh</i> </span>
+    </td>
+  </tr>
+
+</table>
+
+<table style="width: 100%; margin-top:150px ;height: 60px; max-height: 120px; ">
+<tr><td colspan="2" style="background-color:#BDBDBD"></td></tr>
+<tr ng-class="comment.cSeen ==0 ? 'unseen' : 'seen'"   ng-repeat="comment in comments" id="{{comment.cID}}" ng-click="SeenClicked(comment.cID, comment.cSeen)">
+  <td  style="width: 90%; padding-left: 10px;"><span style="font-weight: 700!important;">{{comment.cS}}</span><br/>
+  <span>{{comment.cB}}</span>
+  </td>
+  <td class="block-two">{{comment.cDateTime}}<br/>
+    {{comment.cStar}} &nbsp;<i class="ion-star star-color"></i>
+  </td>
+
+</tr>
+
+</table>
+</body>
+</html>

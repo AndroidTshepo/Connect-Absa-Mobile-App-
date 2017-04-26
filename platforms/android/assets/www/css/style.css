@@ -1,0 +1,11 @@
+/* Empty. Add your own CSS if you like */
+.seen{
+  background-color: #0DA7ED;
+  color: #ffffff;
+}
+
+.unseen {
+  background-color: #ffffff;
+  color: #0DA7ED;
+
+}

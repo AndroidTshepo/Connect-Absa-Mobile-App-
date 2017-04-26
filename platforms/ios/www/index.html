@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width" name="viewport">
+	<title></title>
+	<link href="manifest.json" rel="manifest"><!-- un-comment this code to enable service worker
+    <script>
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('service-worker.js')
+          .then(() => console.log('service worker installed'))
+          .catch(err => console.log('Error', err));
+      }
+    </script>-->
+	<link href="lib/ionic/css/ionic.css" rel="stylesheet">
+	<link href="css/style.css" rel="stylesheet"><!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+    <link href="css/ionic.app.css" rel="stylesheet">
+    -->
+	<!-- ionic/angularjs js -->
+
+	<script src="lib/ionic/js/ionic.bundle.js">
+	</script><!-- cordova script (this will be a 404 during development) -->
+
+	<script src="cordova.js">
+	</script><!-- your app's js -->
+
+	 <!-- jquery -->
+    <script src="js/jquery.min.js">
+    </script>
+
+	<script src="js/app.js">
+	</script>
+	<!-- controller -->
+    <script src="js/controller.js">
+    </script>
+    <!-- service -->
+    <script src="js/factory.js">
+    </script>
+</head>
+<body ng-app = "starter" ng-controller="mainCtrl" class="platform-ios platform-cordova platform-webview">
+
+	<!-- <ion-header-bar class="bar-stable">
+        <h1 class="title">Ionic Blank Starter</h1>
+      </ion-header-bar> -->
+	<table style="color:white;width:100%;height:150px; border:1px; background:; background-image: url(img/ijO10Z2.jpg);background-size: cover; background-repeat: no-repeat;background-position: center center;position:fixed;
+    top:0;
+    
+    z-index:100;">
+		<tr style="height: 90%">
+			<td style="padding-left: 20px;padding-top: 15px; font-weight: 100; font-size: 30px">Monitoring</td>
+		</tr>
+		<tr style="height: 10%">
+			<td style="width: 35%; text-align: center;" ng-click="getReceived()">
+				<div style="float: left; width: 50%;height:100%;background: ;display: -webkit-box; display: -moz-box; display: -ms-flexbox; display: -webkit-flex; display: flex; -webkit-box-align: center; -moz-box-align: center; -ms-flex-align: center; -webkit-align-items: center; align-items: center; -webkit-box-pack: center; -moz-box-pack: center; -ms-flex-pack: center; -webkit-justify-content: center; justify-content: center;">
+					<i class="ion-android-done" style="font-size: 25px;"></i>
+				</div>
+				<div style="background: ; width: 50%;height: 100%;display: -webkit-box; float: right; display: -moz-box; display: -ms-flexbox; display: -webkit-flex; display: flex; -webkit-box-align: center; -moz-box-align: center; -ms-flex-align: center; -webkit-align-items: center; align-items: center; -webkit-box-pack: center; -moz-box-pack: center; -ms-flex-pack: center; -webkit-justify-content: center; justify-content: center;"><span style="text-align: left">{{receive}}<br><span style="font-size: 10px">received</span></span></div>
+			</td>
+			<td style="width: 30%; text-align: center;" ng-click="getSeen()">
+				<div style="float: left; width: 50%;height:100%;background: ;display: -webkit-box; display: -moz-box; display: -ms-flexbox; display: -webkit-flex; display: flex; -webkit-box-align: center; -moz-box-align: center; -ms-flex-align: center; -webkit-align-items: center; align-items: center; -webkit-box-pack: center; -moz-box-pack: center; -ms-flex-pack: center; -webkit-justify-content: center; justify-content: center;border-left: 1px solid gray">
+					<i class="ion-android-done-all" style="font-size: 25px;"></i>
+				</div>
+				<div style="background: ; width: 50%;height: 100%;display: -webkit-box; float: right; display: -moz-box; display: -ms-flexbox; display: -webkit-flex; display: flex; -webkit-box-align: center; -moz-box-align: center; -ms-flex-align: center; -webkit-align-items: center; align-items: center; -webkit-box-pack: center; -moz-box-pack: center; -ms-flex-pack: center; -webkit-justify-content: center; justify-content: center;"><span style="text-align: left">{{seen}}<br><span style="font-size: 10px">seen</span></span></div>
+			</td>
+			<td style="width: 35%; text-align: center;" ng-click="refresh()">
+				<div style="float: left; width: 50%;height:100%;background: ;display: -webkit-box; display: -moz-box; display: -ms-flexbox; display: -webkit-flex; display: flex; -webkit-box-align: center; -moz-box-align: center; -ms-flex-align: center; -webkit-align-items: center; align-items: center; -webkit-box-pack: center; -moz-box-pack: center; -ms-flex-pack: center; -webkit-justify-content: center; justify-content: center;border-left: 1px solid gray">
+					<i class="ion-ios-refresh-empty" style="font-size: 25px;"></i>
+				</div>
+				<div style="background: ; width: 50%;height: 100%;display: -webkit-box; float: right; display: -moz-box; display: -ms-flexbox; display: -webkit-flex; display: flex; -webkit-box-align: center; -moz-box-align: center; -ms-flex-align: center; -webkit-align-items: center; align-items: center; -webkit-box-pack: center; -moz-box-pack: center; -ms-flex-pack: center; -webkit-justify-content: center; justify-content: center;" >
+					<span style="text-align: left;">{{time}}<br><span style="color:black"><span style="font-size: 10px">.</span></span></span>
+				</div>
+			</td>
+		</tr>
+	</table>
+	
+	<table style="width: 100%; margin-top:150px ;height: 60px; max-height: 120px">
+
+<!-- ============================================================================================= -->
+		<tr style="color: gray; background: #F5F5F5 ; border-bottom: 1px solid white" ng-repeat= "comment in comments" >
+			<td style="width: 20%">
+				<div style="background : ; width:100%; height: 80%; color: gray; display: -webkit-box;
+display: -moz-box;
+display: -ms-flexbox;
+display: -webkit-flex;
+display: flex;
+
+-webkit-box-align: center;
+-moz-box-align: center;
+-ms-flex-align: center;
+-webkit-align-items: center;
+align-items: center;
+
+-webkit-box-pack: center;
+-moz-box-pack: center;
+-ms-flex-pack: center;
+-webkit-justify-content: center;
+justify-content: center;"><i class="ion-ios-clock-outline" style="font-size: 25px;color: green"></i> </div><center style="font-size: 10px;margin-top: -10px">{{comment.cDateTime}}</center>
+			</td>
+			<td style="width: 60%;vertical-align: top;text-align: left;padding: 10px">
+				<span style="font-weight: 500">{{comment.cS}}</span><br>
+				<span style="font-weight: ">{{comment.cB}}</span>
+			</td>
+			<td ng-show="showButton" style="width: 20%; background: {{color}}" ng-click="Seen(comment)"> <div style="background : ; width:100%; height: 80%; color: white; display: -webkit-box;
+display: -moz-box;
+display: -ms-flexbox;
+display: -webkit-flex;
+display: flex;
+
+-webkit-box-align: center;
+-moz-box-align: center;
+-ms-flex-align: center;
+-webkit-align-items: center;
+align-items: center;
+
+-webkit-box-pack: center;
+-moz-box-pack: center;
+-ms-flex-pack: center;
+-webkit-justify-content: center;
+justify-content: center;"><i class="{{tick}}" style="font-size: 25px;"></i></div><center style="font-size: 10px;margin-top: -10px;color:#F5BDAB">{{comment.cStar}} <i class="ion-ios-star-outline" style="font-size: 13px;"></i></center></td>
+		</tr>
+<!-- ============================================================================================= -->
+
+
+		
+
+	</table>
+</body>
+</html>

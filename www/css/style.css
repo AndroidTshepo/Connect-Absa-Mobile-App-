@@ -1,0 +1,30 @@
+.seen{
+  background-color:#2196F3;
+  color: #ffffff;
+}
+
+.unseen {
+  background-color: #ffffff;
+  color:#2196F3;
+
+}
+tr{
+  border-bottom: 1px solid #BDBDBD;
+}
+td{
+  "Copperplate, Copperplate Gothic Light, fantasy";
+  font-size: 10px;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: 500;
+  line-height: 26.4px;
+
+
+}
+.star-color{
+ font-size: 16px;
+  color: #ffd700;
+}
+.block-two{
+  width: 10%;padding-right: 10px; padding-top: 10px;
+}
